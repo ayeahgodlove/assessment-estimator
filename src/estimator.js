@@ -21,7 +21,6 @@
 */
 const covid19ImpactEstimator = (data) => {
   const inputData = data;
-  let currentlyInfected;
   let impact = {};
   let servereImpact = {};
   /*
@@ -29,32 +28,42 @@ const covid19ImpactEstimator = (data) => {
   */
   let toDays = inputData.timeToElapse;
   if (inputData.periodType === 'days') {
-    impact.infectionsByRequestedTime = impact.currentlyInfected * (2 ** (toDays / 3));
-    servereImpact.infectionsByRequestedTime = impact.currentlyInfected * (2 ** (toDays / 3));
+    impact.infectionsByRequestedTime = impact.currentlyInfected * (
+      2 ** Math.trunc(toDays / 3)
+    );
+    servereImpact.infectionsByRequestedTime = impact.currentlyInfected * (
+      2 ** Math.trunc(toDays / 3)
+    );
   }
   if (inputData.periodType === 'weeks') {
     toDays = inputData.timeToElapse * 7;
-    impact.infectionsByRequestedTime = impact.currentlyInfected * (2 ** (toDays / 3));
-    servereImpact.infectionsByRequestedTime = impact.currentlyInfected * (2 ** (toDays / 3));
+    impact.infectionsByRequestedTime = impact.currentlyInfected * (
+      2 ** Math.trunc(toDays / 3)
+    );
+    servereImpact.infectionsByRequestedTime = impact.currentlyInfected * (
+      2 ** Math.trunc(toDays / 3)
+    );
   }
   if (inputData.periodType === 'months') {
     toDays = inputData.timeToElapse * 30;
-    impact.infectionsByRequestedTime = impact.currentlyInfected * (2 ** (toDays / 3));
-    servereImpact.infectionsByRequestedTime = impact.currentlyInfected * (2 ** (toDays / 3));
+    impact.infectionsByRequestedTime = impact.currentlyInfected * (
+      2 ** Math.trunc(toDays / 3)
+    );
+    servereImpact.infectionsByRequestedTime = impact.currentlyInfected * (
+      2 ** Math.trunc(toDays / 3)
+    );
   }
   /*
    impact Object
   */
   impact = {
-    currentlyInfected: inputData.reportedCases * 10,
-    infectionsByRequestedTime: currentlyInfected * (2 ** 10)
+    currentlyInfected: inputData.reportedCases * 10
   };
   /*
    serverImpact Object
   */
   servereImpact = {
-    currentlyInfected: inputData.reportedCases * 50,
-    infectionsByRequestedTime: currentlyInfected * (2 ** 10)
+    currentlyInfected: inputData.reportedCases * 50
   };
   return {
     inputData,
