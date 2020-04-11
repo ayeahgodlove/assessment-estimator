@@ -12,17 +12,20 @@
     population: 66622705,
     totalHospitalBeds: 1380614
   };
-  1w - 7ds
-  4ws - 7 * 4 = 28
-
-  1m - 30ds
-  4ms = x =4*30
-  toDays converter
 */
+
 const covid19ImpactEstimator = (data) => {
   const inputData = data;
-  let impact = {};
-  let servereImpact = {};
+  const impact = {};
+  const severeImpact = {};
+  /*
+   impact Object
+  */
+  impact.currentlyInfected = inputData.reportedCases * 10;
+  /*
+    serverImpact Object
+  */
+  severeImpact.currentlyInfected = inputData.reportedCases * 50;
   /*
     check periodType: if days,weeks or months
   */
@@ -31,7 +34,7 @@ const covid19ImpactEstimator = (data) => {
     impact.infectionsByRequestedTime = impact.currentlyInfected * (
       2 ** Math.trunc(toDays / 3)
     );
-    servereImpact.infectionsByRequestedTime = impact.currentlyInfected * (
+    severeImpact.infectionsByRequestedTime = impact.currentlyInfected * (
       2 ** Math.trunc(toDays / 3)
     );
   }
@@ -40,7 +43,7 @@ const covid19ImpactEstimator = (data) => {
     impact.infectionsByRequestedTime = impact.currentlyInfected * (
       2 ** Math.trunc(toDays / 3)
     );
-    servereImpact.infectionsByRequestedTime = impact.currentlyInfected * (
+    severeImpact.infectionsByRequestedTime = impact.currentlyInfected * (
       2 ** Math.trunc(toDays / 3)
     );
   }
@@ -49,26 +52,14 @@ const covid19ImpactEstimator = (data) => {
     impact.infectionsByRequestedTime = impact.currentlyInfected * (
       2 ** Math.trunc(toDays / 3)
     );
-    servereImpact.infectionsByRequestedTime = impact.currentlyInfected * (
+    severeImpact.infectionsByRequestedTime = impact.currentlyInfected * (
       2 ** Math.trunc(toDays / 3)
     );
   }
-  /*
-   impact Object
-  */
-  impact = {
-    currentlyInfected: inputData.reportedCases * 10
-  };
-  /*
-   serverImpact Object
-  */
-  servereImpact = {
-    currentlyInfected: inputData.reportedCases * 50
-  };
   return {
     inputData,
     impact,
-    servereImpact
+    severeImpact
   };
 };
 
