@@ -34,7 +34,7 @@ const covid19ImpactEstimator = (data) => {
     impact.infectionsByRequestedTime = impact.currentlyInfected * (
       2 ** Math.trunc(toDays / 3)
     );
-    severeImpact.infectionsByRequestedTime = impact.currentlyInfected * (
+    severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * (
       2 ** Math.trunc(toDays / 3)
     );
   }
@@ -43,7 +43,7 @@ const covid19ImpactEstimator = (data) => {
     impact.infectionsByRequestedTime = impact.currentlyInfected * (
       2 ** Math.trunc(toDays / 3)
     );
-    severeImpact.infectionsByRequestedTime = impact.currentlyInfected * (
+    severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * (
       2 ** Math.trunc(toDays / 3)
     );
   }
@@ -52,7 +52,7 @@ const covid19ImpactEstimator = (data) => {
     impact.infectionsByRequestedTime = impact.currentlyInfected * (
       2 ** Math.trunc(toDays / 3)
     );
-    severeImpact.infectionsByRequestedTime = impact.currentlyInfected * (
+    severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * (
       2 ** Math.trunc(toDays / 3)
     );
   }
