@@ -13,23 +13,32 @@
     totalHospitalBeds: 1380614
   };
 */
+// Challenge two
+const serverPositiveCases = (infectionsByRequestedTime) => 0.15 * infectionsByRequestedTime;
+const numberAvailableOfHospitalBeds = (totalHospitalBeds) => totalHospitalBeds - (
+  0.65 * totalHospitalBeds
+);
+const availableNumberOfBedsForSevereCases = (
+  totalHospitalBeds, severeCasesByRequestedTime
+) => numberAvailableOfHospitalBeds(totalHospitalBeds) + severeCasesByRequestedTime;
 
 const covid19ImpactEstimator = (data) => {
   const inputData = data;
+  /*
+    initializing impact and severeImpact Objects
+  */
   const impact = {};
   const severeImpact = {};
   /*
-   impact Object
+    Assigning reportedCases*10 or 50 to our objects
   */
   impact.currentlyInfected = inputData.reportedCases * 10;
-  /*
-    serverImpact Object
-  */
   severeImpact.currentlyInfected = inputData.reportedCases * 50;
-  /*
-    check periodType: if days,weeks or months
-  */
   let toDays = inputData.timeToElapse;
+  /*
+    Your estimator will be required to make estimations over periods in days
+    , weeks and months and  Assigning infectionsByRequestTime to impact and severImpacts
+  */
   if (inputData.periodType === 'days') {
     impact.infectionsByRequestedTime = impact.currentlyInfected * (
       2 ** Math.trunc(toDays / 3)
@@ -56,6 +65,21 @@ const covid19ImpactEstimator = (data) => {
       2 ** Math.trunc(toDays / 3)
     );
   }
+  /*
+    estimating number of server positive cases challenge two
+  */
+  impact.severeCasesByRequestedTime = serverPositiveCases(
+    impact.infectionsByRequestedTime
+  );
+  impact.hospitalBedsByRequestTime = availableNumberOfBedsForSevereCases(
+    inputData.totalHospitalBeds, impact.severeCasesByRequestedTime
+  );
+  severeImpact.severeCasesByRequestedTime = serverPositiveCases(
+    severeImpact.infectionsByRequestedTime
+  );
+  severeImpact.hospitalBedsByRequestTime = availableNumberOfBedsForSevereCases(
+    inputData.totalHospitalBeds, severeImpact.severeCasesByRequestedTime
+  );
   return {
     inputData,
     impact,
