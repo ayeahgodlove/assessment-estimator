@@ -22,7 +22,7 @@ const numberAvailableOfHospitalBeds = (totalHospitalBeds) => totalHospitalBeds -
 );
 const availableNumberOfBedsForSevereCases = (
   totalHospitalBeds, severeCasesByRequestedTime
-) => numberAvailableOfHospitalBeds(totalHospitalBeds) + severeCasesByRequestedTime;
+) => numberAvailableOfHospitalBeds(totalHospitalBeds) - severeCasesByRequestedTime;
 
 const covid19ImpactEstimator = (data) => {
   const inputData = data;
