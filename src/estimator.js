@@ -14,9 +14,11 @@
   };
 */
 // Challenge two
-const serverPositiveCases = (infectionsByRequestedTime) => 0.15 * infectionsByRequestedTime;
+const serverPositiveCases = (infectionsByRequestedTime) => Math.trunc(
+  0.15 * infectionsByRequestedTime
+);
 const numberAvailableOfHospitalBeds = (totalHospitalBeds) => totalHospitalBeds - (
-  0.65 * totalHospitalBeds
+  Math.trunc(0.65 * totalHospitalBeds)
 );
 const availableNumberOfBedsForSevereCases = (
   totalHospitalBeds, severeCasesByRequestedTime
@@ -80,6 +82,8 @@ const covid19ImpactEstimator = (data) => {
   severeImpact.hospitalBedsByRequestedTime = availableNumberOfBedsForSevereCases(
     inputData.totalHospitalBeds, severeImpact.severeCasesByRequestedTime
   );
+  // console.log("Impact: ",impact)
+  // console.log("severeImpact: ",severeImpact)
   return {
     inputData,
     impact,
@@ -88,3 +92,4 @@ const covid19ImpactEstimator = (data) => {
 };
 
 export default covid19ImpactEstimator;
+// covid19ImpactEstimator(data);
