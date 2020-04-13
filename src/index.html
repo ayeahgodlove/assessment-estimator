@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>COVID-19 Estimator</title>
+  <link rel="manifest" href="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="convid estimator App">
+  <meta name="keywords" content="A novelty COVID-19 infections estimator">
+  <meta name="author" content="Ayeah Godlove">
+  
+  <!-- styles -->
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+  <link rel="stylesheet" type="text/css" href="src/css/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="text-center text-light">COVID-19 ESTMATOR APP</h1>
+          </header>
+        
+          <main id="main">
+            <form id="form" class="form" method="GET">
+                <div class="form-control">
+                    <label for="population">Population</label>
+                    <input type="number" name="population" id="population" placeholder="Enter Population" data-population>
+                </div>
+                <div class="form-control">
+                    <label for="timeToElapse">Elapse Time</label>
+                    <input type="text" name="timeToElapse" id="timeToElapse" data-time-to-elapse placeholder="enter timeToElapse">
+                </div>
+                <div class="form-control">
+                    <label for="reportedCases">Reported Cases</label>
+                    <input type="text" name="reportedCases" id="reportedCases" data-time-to-elapse placeholder="reported cases">
+                </div>
+                <div class="form-control">
+                    <label for="totalHospitalBeds">Total Hospital Beds</label>
+                    <input type="text" name="totalHospitalBeds" id="totalHospitalBeds" placeholder="total hospital beds" data-total-hospital-beds>
+                </div>
+                <div class="form-control">
+                    <label for="periodType">Period Type</label>
+                    <select name="periodType" id="periodType" data-period-type>
+                            <option value="days">days</option>
+                            <option value="weeks">weeks</option>
+                            <option value="months">months</option>
+                    </select>
+                </div>
+                <button type="submit" data-go-estimate>Submit</button>
+            </form>
+          </main>
+    </div>
+  <script src="src/estimator.js"></script>
+  <script src="src/app/app.js"></script>
+</body>
+</html>
