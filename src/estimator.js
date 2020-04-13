@@ -1,4 +1,4 @@
-
+/*
   data = {
     region: {
     name: "Africa",
@@ -12,7 +12,7 @@
     population: 66622705,
     totalHospitalBeds: 1380614
   };
-
+*/
 // Challenge two
 // This is the estimated number of severe positive cases
 const serverPositiveCases = (infectionsByRequestedTime) => Math.trunc(
@@ -42,8 +42,8 @@ const severePositiveCasesRequireVentilator = (infectionsByRequestedTime) => Math
 
 const moneyLoseDaily = (infectionsByRequestedTime,
   avgDailyIncomePopulation, avgDailyIncomeInUSD, timeToElapse) => Math.trunc(
-    (infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD) / timeToElapse
-  );
+  (infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD) / timeToElapse
+);
 
 const covid19ImpactEstimator = (data) => {
   const inputData = data;
@@ -58,7 +58,7 @@ const covid19ImpactEstimator = (data) => {
   impact.currentlyInfected = Math.trunc(inputData.reportedCases * 10);
   severeImpact.currentlyInfected = Math.trunc(inputData.reportedCases * 50);
   let toDays = inputData.timeToElapse;
-  let period = inputData.periodType;
+  const period = inputData.periodType;
   /*
     Your estimator will be required to make estimations over periods in days
     , weeks and months and  Assigning infectionsByRequestTime to impact and severImpacts
@@ -120,7 +120,7 @@ const covid19ImpactEstimator = (data) => {
   );
   // estimate how much money the economy is likely to lose daily,
   // over the said period of time.
-  if(period === 'days') {
+  if (period === 'days') {
     impact.dollarsInFlight = moneyLoseDaily(
       impact.infectionsByRequestedTime, inputData.region.avgDailyIncomePopulation,
       inputData.region.avgDailyIncomeInUSD, inputData.timeToElapse
@@ -130,8 +130,8 @@ const covid19ImpactEstimator = (data) => {
       inputData.region.avgDailyIncomeInUSD, inputData.timeToElapse
     );
   }
-  if(period === 'weeks') {
-    inputData.timeToElapse = inputData.timeToElapse * 7;
+  if (period === 'weeks') {
+    inputData.timeToElapse *= 7;
     impact.dollarsInFlight = moneyLoseDaily(
       impact.infectionsByRequestedTime, inputData.region.avgDailyIncomePopulation,
       inputData.region.avgDailyIncomeInUSD, inputData.timeToElapse
@@ -141,9 +141,8 @@ const covid19ImpactEstimator = (data) => {
       inputData.region.avgDailyIncomeInUSD, inputData.timeToElapse
     );
   }
-  if(period === 'months') {
-    inputData.timeToElapse = inputData.timeToElapse * 30;
-    inputData.timeToElapse = inputData.timeToElapse * 7;
+  if (period === 'months') {
+    inputData.timeToElapse *= 30;
     impact.dollarsInFlight = moneyLoseDaily(
       impact.infectionsByRequestedTime, inputData.region.avgDailyIncomePopulation,
       inputData.region.avgDailyIncomeInUSD, inputData.timeToElapse
@@ -154,10 +153,8 @@ const covid19ImpactEstimator = (data) => {
     );
   }
 
-  
-
-  console.log("Impact: ",impact)
-  console.log("severeImpact: ",severeImpact)
+  // console.log("Impact: ",impact)
+  // console.log("severeImpact: ",severeImpact)
   return {
     inputData,
     impact,
@@ -165,5 +162,5 @@ const covid19ImpactEstimator = (data) => {
   };
 };
 
-// export default covid19ImpactEstimator;
-covid19ImpactEstimator(data);
+export default covid19ImpactEstimator;
+// covid19ImpactEstimator(data);
