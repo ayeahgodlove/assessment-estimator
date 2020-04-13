@@ -14,12 +14,15 @@
   };
 */
 // Challenge two
+// This is the estimated number of severe positive cases
 const serverPositiveCases = (infectionsByRequestedTime) => Math.trunc(
   0.15 * infectionsByRequestedTime
 );
+// the number of available beds.
 const numberAvailableOfHospitalBeds = (totalHospitalBeds) => totalHospitalBeds - (
   Math.trunc(0.65 * totalHospitalBeds)
 );
+// estimate the number of available hospital beds for severe COVID-19 positive patients.
 const availableNumberOfBedsForSevereCases = (
   totalHospitalBeds, severeCasesByRequestedTime
 ) => numberAvailableOfHospitalBeds(totalHospitalBeds) - severeCasesByRequestedTime;
@@ -34,8 +37,8 @@ const covid19ImpactEstimator = (data) => {
   /*
     Assigning reportedCases*10 or 50 to our objects
   */
-  impact.currentlyInfected = inputData.reportedCases * 10;
-  severeImpact.currentlyInfected = inputData.reportedCases * 50;
+  impact.currentlyInfected = Math.trunc(inputData.reportedCases * 10);
+  severeImpact.currentlyInfected = Math.trunc(inputData.reportedCases * 50);
   let toDays = inputData.timeToElapse;
   /*
     Your estimator will be required to make estimations over periods in days
