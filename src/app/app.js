@@ -18,7 +18,7 @@ const periodType = document.getElementById('periodType');
 
 // let formData = new FormData();
 // console.log(formData)
-function getValues() {
+function getFormData() {
   data.periodType = periodType.value;
   data.timeToElapse = timeToElapse.value;
   data.reportedCases = reportedCases.value;
@@ -28,5 +28,5 @@ function getValues() {
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
-  getValues();
+  getFormData();
 });
