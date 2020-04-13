@@ -19,28 +19,28 @@
     <div class="container">
         <header class="header">
             <h1 class="text-center text-light">COVID-19 ESTMATOR APP</h1>
-          </header>
+        </header>
         
-          <main id="main">
+        <main id="main">
             <form id="form" class="form" method="GET">
                 <div class="form-control">
-                    <label for="population">Population</label>
+                    <label for="population">Enter total Population</label>
                     <input type="number" name="population" id="population" placeholder="Enter Population" data-population>
                 </div>
                 <div class="form-control">
-                    <label for="timeToElapse">Elapse Time</label>
-                    <input type="text" name="timeToElapse" id="timeToElapse" data-time-to-elapse placeholder="enter timeToElapse">
+                    <label for="timeToElapse">Enter Elapse Time</label>
+                    <input type="number" name="timeToElapse" id="timeToElapse" data-time-to-elapse placeholder="enter timeToElapse">
                 </div>
                 <div class="form-control">
-                    <label for="reportedCases">Reported Cases</label>
-                    <input type="text" name="reportedCases" id="reportedCases" data-time-to-elapse placeholder="reported cases">
+                    <label for="reportedCases">Enter number of Reported Cases</label>
+                    <input type="number" name="reportedCases" id="reportedCases" data-time-to-elapse placeholder="reported cases">
                 </div>
                 <div class="form-control">
-                    <label for="totalHospitalBeds">Total Hospital Beds</label>
-                    <input type="text" name="totalHospitalBeds" id="totalHospitalBeds" placeholder="total hospital beds" data-total-hospital-beds>
+                    <label for="totalHospitalBeds">Enter Total number of Hospital Beds</label>
+                    <input type="number" name="totalHospitalBeds" id="totalHospitalBeds" placeholder="total hospital beds" data-total-hospital-beds>
                 </div>
                 <div class="form-control">
-                    <label for="periodType">Period Type</label>
+                    <label for="periodType">Select Period Type</label>
                     <select name="periodType" id="periodType" data-period-type>
                             <option value="days">days</option>
                             <option value="weeks">weeks</option>
@@ -49,9 +49,9 @@
                 </div>
                 <button type="submit" data-go-estimate>Submit</button>
             </form>
-          </main>
+        </main>
     </div>
-  <script src="src/estimator.js" async></script>
+  <script src="src/estimator.js"></script>
   <script src="src/app/app.js"></script>
 </body>
 </html>
