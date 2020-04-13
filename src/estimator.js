@@ -27,6 +27,24 @@ const availableNumberOfBedsForSevereCases = (
   totalHospitalBeds, severeCasesByRequestedTime
 ) => numberAvailableOfHospitalBeds(totalHospitalBeds) - severeCasesByRequestedTime;
 
+// challenge 3
+// This is the estimated number of severe positive cases
+// that will require ICU care.
+const severePositiveCasesRequireICUcare = (infectionsByRequestedTime) => Math.trunc(
+  0.05 * infectionsByRequestedTime
+);
+
+// This is the estimated number of severe positive
+// cases that will require ventilators.
+const severePositiveCasesRequireVentilator = (infectionsByRequestedTime) => Math.trunc(
+  0.02 * infectionsByRequestedTime
+);
+
+const moneyLoseDaily = (infectionsByRequestedTime,
+  avgDailyIncomePopulation, avgDailyIncomeInUSD) => Math.trunc(
+  (infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD) / 30
+);
+
 const covid19ImpactEstimator = (data) => {
   const inputData = data;
   /*
@@ -85,6 +103,32 @@ const covid19ImpactEstimator = (data) => {
   severeImpact.hospitalBedsByRequestedTime = availableNumberOfBedsForSevereCases(
     inputData.totalHospitalBeds, severeImpact.severeCasesByRequestedTime
   );
+  // challenge 3
+  // estimated number of severe positive cases that will require ICU care.
+  impact.casesForICUByRequestedTime = severePositiveCasesRequireICUcare(
+    impact.infectionsByRequestedTime
+  );
+  impact.casesForVentilatorsByRequestedTime = severePositiveCasesRequireVentilator(
+    impact.infectionsByRequestedTime
+  );
+  severeImpact.casesForICUByRequestedTime = severePositiveCasesRequireICUcare(
+    severeImpact.infectionsByRequestedTime
+  );
+  severeImpact.casesForVentilatorsByRequestedTime = severePositiveCasesRequireVentilator(
+    severeImpact.infectionsByRequestedTime
+  );
+  // estimate how much money the economy is likely to lose daily,
+  // over the said period of time.
+  impact.dollarsInFlight = moneyLoseDaily(
+    impact.infectionsByRequestedTime, inputData.region.avgDailyIncomePopulation,
+    inputData.region.avgDailyIncomeInUSD
+  );
+
+  severeImpact.dollarsInFlight = moneyLoseDaily(
+    severeImpact.infectionsByRequestedTime, inputData.region.avgDailyIncomePopulation,
+    inputData.region.avgDailyIncomeInUSD
+  );
+
   // console.log("Impact: ",impact)
   // console.log("severeImpact: ",severeImpact)
   return {
