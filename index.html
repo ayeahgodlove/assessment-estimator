@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>COVID-19 Estimator</title>
+  <link rel="manifest" href="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="convid estimator App">
+  <meta name="keywords" content="A novelty COVID-19 infections estimator">
+  <meta name="author" content="Ayeah Godlove">
+  
+  <!-- icons -->
+  <link rel="apple-touch-icon" sizes="57x57" href="src/img/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="src/img/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="src/img/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="src/img/icons/apple-icon-76x76.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="src/img/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="src/img/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="src/img/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="src/img/icons/favicon-16x16.png">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="src/img/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  <!-- styles -->
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+  <link rel="stylesheet" type="text/css" href="src/css/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="text-center text-light">COVID-19 ESTMATOR APP</h1>
+        </header>
+        
+        <main id="main">
+            <form id="form" class="form" method="GET">
+                <div class="form-control">
+                    <label for="population">Enter total Population</label>
+                    <input type="number" name="population" id="population" placeholder="Enter Population" data-population>
+                </div>
+                <div class="form-control">
+                    <label for="timeToElapse">Enter Elapse Time</label>
+                    <input type="number" name="timeToElapse" id="timeToElapse" data-time-to-elapse placeholder="enter timeToElapse">
+                </div>
+                <div class="form-control">
+                    <label for="reportedCases">Enter number of Reported Cases</label>
+                    <input type="number" name="reportedCases" id="reportedCases" data-reported-cases placeholder="reported cases">
+                </div>
+                <div class="form-control">
+                    <label for="totalHospitalBeds">Enter Total number of Hospital Beds</label>
+                    <input type="number" name="totalHospitalBeds" id="totalHospitalBeds" placeholder="total hospital beds" data-total-hospital-beds>
+                </div>
+                <div class="form-control">
+                    <label for="periodType">Select Period Type</label>
+                    <select name="periodType" id="periodType" data-period-type>
+                            <option value="days">days</option>
+                            <option value="weeks">weeks</option>
+                            <option value="months">months</option>
+                    </select>
+                </div>
+                <button type="submit" data-go-estimate>Submit Data</button>
+            </form>
+        </main>
+    </div>
+  <script src="src/estimator.js" type="module"></script>
+  <script src="src/app/app.js"></script>
+</body>
+</html>

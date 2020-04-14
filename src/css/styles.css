@@ -1,0 +1,112 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url('../img/main.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #031629;
+}
+.container {
+    background: #f7f7f7;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    max-width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.header {
+    background: #ebd8d8;
+    padding: 20px 40px;
+    border-bottom: 1px solid #adc0d3;
+}
+
+.header h1 {
+    margin: 0 !important;
+    font-size: 24px;
+    text-align: center;
+    color: #031629;
+}
+.form {
+    padding: 30px 40px;
+}
+.form-control {
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    position: relative;
+}
+.form-control label {
+    color: #031629;
+    /* font-size: 18px; */
+    font-weight: 500;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+.form-control input, select {
+    border: 2px solid #ebd8d8;
+    border-radius: 4px;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 16px;
+}
+/* success and error classes */
+.form-control.success input {
+    border-color: #2ecc71;
+}
+.form-control.error input {
+    border-color: #e74c3c;
+}
+.form-control i {
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    visibility: hidden;
+}
+.form-control.success i.fa-check-circle {
+    visibility: visible;
+    color: #2ecc71;
+}
+
+.form-control.error i.fa-exclamation-circle {
+    visibility: visible;
+    color: #e74c3c;
+}
+.form-control small {
+    visibility: hidden;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.form-control.error small {
+    visibility: visible;
+    color: #e74c3c;
+}
+.form-control.success small {
+    visibility: visible;
+    color: #2ecc71;
+}
+
+.form button {
+    background: #031629;
+    border: 2px solid #031629;
+    border-radius: 4px;
+    color: #f7f7f7;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-family: inherit;
+}
