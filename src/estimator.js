@@ -29,7 +29,6 @@ const availableNumberOfBedsForSevereCases = (
 
 // challenge 3
 // This is the estimated number of severe positive cases
-// that will require ICU care.
 const severePositiveCasesRequireICUcare = (infectionsByRequestedTime) => Math.trunc(
   0.05 * infectionsByRequestedTime
 );
@@ -153,8 +152,6 @@ const covid19ImpactEstimator = (data) => {
     );
   }
 
-  // console.log("Impact: ",impact)
-  // console.log("severeImpact: ",severeImpact)
   return {
     inputData,
     impact,
@@ -163,4 +160,3 @@ const covid19ImpactEstimator = (data) => {
 };
 
 export default covid19ImpactEstimator;
-// covid19ImpactEstimator(data);
